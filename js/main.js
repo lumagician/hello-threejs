@@ -5,18 +5,21 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ffff });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const geometry = new THREE.TorusGeometry( 6, 2, 100, 100 );
+const material = new THREE.MeshStandardMaterial({ color: 0x00ff00});
+const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
+scene.add( light );
 
-camera.position.z = 5;
+light.position.set( 10, 10, 10 );
+camera.position.z = 20;
 
 function animate() {
     requestAnimationFrame(animate);
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    torus.rotation.x += 0.01;
+    torus.rotation.y += 0.01;
 
     renderer.render(scene, camera);
 };
