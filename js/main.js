@@ -13,12 +13,12 @@ scene.add(torus);
 scene.add( light );
 
 light.position.set( 10, 10, 10 );
-camera.position.z = 20;
+camera.position.z = 25;
 
 function animate() {
     requestAnimationFrame(animate);
 
-    torus.rotation.x += 0.01;
+    torus.rotation.x += 0.02;
     torus.rotation.y += 0.01;
 
     renderer.render(scene, camera);
